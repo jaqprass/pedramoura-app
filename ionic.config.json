@@ -1,0 +1,8 @@
+{
+  "name": "pedramoura-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d17b9506"
+}
