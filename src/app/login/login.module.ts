@@ -2,10 +2,10 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HomePage as HomePage } from './home.page';
+import { LoginPage as LoginPage } from './login.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { HomePageRoutingModule as HomePageRoutingModule } from './home-routing.module';
+import { LoginPageRoutingModule as LoginPageRoutingModule } from './login-routing.module';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { HomePageRoutingModule as HomePageRoutingModule } from './home-routing.m
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule,
+    LoginPageRoutingModule,
   ],
-  declarations: [HomePage],
+  declarations: [LoginPage],
 })
-export class HomePageModule {}
+export class LoginPageModule {}
