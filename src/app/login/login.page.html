@@ -8,8 +8,17 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="login-container">
-    <ion-input placeholder="Email"></ion-input>
-    <ion-input placeholder="Senha" type="password"></ion-input>
-    <ion-button>Entrar</ion-button>
+    <ion-button fill="clear">
+      <span (click)="fechar()" class="fechar-botao">X</span>
+    </ion-button>
+    <ion-input type="email" [(ngModel)]="email" placeholder="Email"></ion-input>
+    <ion-input
+      type="password"
+      [(ngModel)]="senha"
+      placeholder="Senha"
+    ></ion-input>
+    <ion-button (click)="entrar()">Entrar</ion-button>
+
+    <div *ngIf="erro" class="erro">{{ erro }}</div>
   </div>
 </ion-content>
