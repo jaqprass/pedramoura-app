@@ -4,12 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Entregas</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Entregas page"></app-explore-container>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let rota of rotas" (click)="verDetalhes(rota.id)">
+      <ion-label>
+        <h2><strong>Entrega: {{ rota.id }}</strong></h2>
+        <p>{{ rota.quantidade }} pedidos</p>
+        <p>Data de Entrega: {{ rota.dataEntrega }}</p>
+        <p>KM's: {{ rota.kms }}</p>
+        <p>Status: {{ rota.status }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

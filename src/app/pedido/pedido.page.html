@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalhes da Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <h2 class="texto">Pedido {{ detalhePedido.id }}</h2>
+      <p><strong>Nome do cliente: </strong>{{ detalhePedido.nomeCliente }}</p>
+      <p><strong>Endereço: </strong>{{ detalhePedido.endereco }}</p>
+      <p><strong>Observações: </strong>{{ detalhePedido.observacoes }}</p>
+      <p><strong>Telefone: </strong>{{ detalhePedido.telefone }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="statusEntrega">
+      <ion-item>
+        <ion-radio value="Entregue">Entregue</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="Não Entregue">Não Entregue</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Observações</ion-label>
+    <ion-textarea
+      aria-label="Observações"
+      [(ngModel)]="obsEntrega"
+    ></ion-textarea>
+  </ion-item>
+
+  <div class="ion-text-center ion-padding-bottom">
+    <ion-button (click)="salvarObservacoes()">Salvar</ion-button>
+    <ion-button (click)="voltar()">Voltar</ion-button>
+  </div>
+</ion-content>
