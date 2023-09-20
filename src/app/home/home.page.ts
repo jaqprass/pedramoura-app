@@ -14,7 +14,6 @@ export class HomePage {
     this.isLoggedIn = this.auth.isLoggedIn;
   }
 
-  //TODO: texto do botao de entrar ou sair não esta funcionando corretamente sem refresh da pagina
   ionViewWillEnter() {
     this.isLoggedIn = this.auth.isLoggedIn;
     console.log(this.isLoggedIn);

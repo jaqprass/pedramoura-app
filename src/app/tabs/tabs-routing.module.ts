@@ -30,6 +30,18 @@ const routes: Routes = [
         canActivate: [authGuard],
       },
       {
+        path: 'pedidos/:id',
+        loadChildren: () =>
+          import('../pedidos/pedidos.module').then((m) => m.PedidosPageModule),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'pedido/:id',
+        loadChildren: () =>
+          import('../pedido/pedido.module').then((m) => m.PedidoPageModule),
+        canActivate: [authGuard],
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full',
