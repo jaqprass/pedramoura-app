@@ -1,11 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Entregas </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
+  <ion-list style="margin-top: 50px">
     <ion-item *ngFor="let rota of rotas" (click)="verDetalhes(rota.id)">
       <ion-label>
         <h2><strong>Entrega: {{ rota.id }}</strong></h2>

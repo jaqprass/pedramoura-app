@@ -47,4 +47,8 @@ export class PedidosPage implements OnInit {
   verPedido(pedidoId: number) {
     this.router.navigate(['tabs/pedido', pedidoId]);
   }
+
+  verMapa() {
+    this.router.navigate(['tabs/mapa', this.pedidos]);
+  }
 }
