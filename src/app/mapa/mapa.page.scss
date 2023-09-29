@@ -1,0 +1,6 @@
+.google-maps-button {
+  position: absolute;
+  bottom: 20px; /* Ajuste conforme necessário para a posição vertical */
+  left: 20px; /* Ajuste conforme necessário para a posição horizontal */
+  z-index: 9999; /* Certifique-se de que o botão esteja acima do mapa */
+}

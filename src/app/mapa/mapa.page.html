@@ -1,12 +1,16 @@
-<ion-content>
-  <ion-header style="margin-top: 50px"></ion-header>
-  <iframe
-    width="100%"
-    height="90%"
-    frameborder="0"
-    style="border: 0"
-    src="https://www.google.com/maps/embed/v1/directions
-?key=AIzaSyD9yWSyBhbOtQt-ybgQSSKJnuTVJGBfKEs&origin=Rua+Ouro+Preto&destination=Rolante&mode=driving&waypoints=Cachoerinha|Gravatai"
-    allowfullscreen
-  ></iframe>
+<ion-header style="margin-top: 50px"> </ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid style="height: 100%">
+    <ion-row style="height: 100%">
+      <ion-col size="12">
+        <div #gmap id="gmap" style="height: 100%"></div>
+        <ion-button
+          class="google-maps-button"
+          (click)="openGoogleMapsNavigation()"
+        >
+          Iniciar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
