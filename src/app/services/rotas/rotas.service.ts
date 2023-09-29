@@ -83,8 +83,6 @@ export class RotasService {
       r[i].status = 'Pronta para entrega';
       if (r[i].id < 10) r[i].id += 12;
     }
-    console.log('r:' + r[1].status);
-    console.log('this.rotasEntrega:' + this.rotasEntrega[1].status);
     return of(r); // return result;
   }
 }

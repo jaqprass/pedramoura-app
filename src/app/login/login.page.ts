@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginPage {
   senha!: string;
   erro: string | null = null;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private toastController: ToastController
+  ) {
     this.email = '';
     this.senha = '';
   }
@@ -30,11 +35,7 @@ export class LoginPage {
           this.router.navigate(['tabs/home']);
         })
         .catch((error) => {
-          console.error(error);
-          this.erro = 'Erro no login.';
-          setTimeout(() => {
-            this.erro = null;
-          }, 4000);
+          this.presentErrorToast();
           this.email = '';
           this.senha = '';
         });
@@ -44,6 +45,16 @@ export class LoginPage {
         this.erro = null;
       }, 4000);
     }
+  }
+
+  async presentErrorToast() {
+    const toast = await this.toastController.create({
+      message: 'Erro no login',
+      duration: 3000,
+      position: 'top',
+      color: 'danger',
+    });
+    toast.present();
   }
 
   fechar() {

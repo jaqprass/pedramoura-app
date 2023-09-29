@@ -16,7 +16,6 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.isLoggedIn = this.auth.isLoggedIn;
-    console.log(this.isLoggedIn);
   }
 
   onButtonClick() {

@@ -19,7 +19,5 @@ export class HistoricoPage implements OnInit {
     this.rotasService.getRotasEntregues().subscribe((data) => {
       this.rotasEntrega = data;
     });
-
-    console.log(this.rotasEntrega);
   }
 }
