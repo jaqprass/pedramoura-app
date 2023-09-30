@@ -1,5 +1,14 @@
 # pedramoura-app
 
+## Setup
+
+```sh
+git clone https://https://github.com/jaqprass/pedramoura-app
+cd pedramoura-app
+npm install
+ionic build
+```
+
 ## Running
 
 ### Web
@@ -12,17 +21,15 @@ ionic serve
 
 ### Android
 
-* Setup
-```sh
-ionic build
-ionic cap add android
-```
-
 * Compile
-```sh
-ionic cap copy
-ionic cap sync
-```
+  * Update code to native device
+  ```sh
+  ionic cap copy
+  ```
+  * Update plugins to native device
+  ```sh
+  ionic cap sync
+  ```
 
 * Run
 ```sh
