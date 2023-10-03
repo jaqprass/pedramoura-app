@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RotasService } from '../services/rotas/rotas.service';
+import { Rota } from '../interfaces/rotas.interface';
 
 @Component({
   selector: 'app-historico',
@@ -7,17 +8,22 @@ import { RotasService } from '../services/rotas/rotas.service';
   styleUrls: ['historico.page.scss'],
 })
 export class HistoricoPage implements OnInit {
-  rotasEntrega: any[] = []; //Criar uma classe para definir o objeto de retonro do back
+  rotas: Rota[] = [];
 
   constructor(private rotasService: RotasService) {}
 
   ngOnInit() {
-    this.carregarPedidos();
+    this.carregarRotas();
   }
 
-  carregarPedidos() {
-    this.rotasService.getRotasEntregues().subscribe((data) => {
-      this.rotasEntrega = data;
+  carregarRotas() {
+    this.rotasService.getRotasEntregues().subscribe({
+      next: (data) => {
+        data ? (this.rotas = data.rotas) : (this.rotas = []);
+      },
+      error: (error) => {
+        console.error('Erro ao buscar as rotas entregues:', error);
+      },
     });
   }
 }

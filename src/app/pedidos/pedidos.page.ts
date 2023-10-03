@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RotasService } from '../services/rotas/rotas.service';
+import { Pedido, Pedidos } from '../interfaces/pedidos.interface';
 
 @Component({
   selector: 'app-pedidos',
@@ -8,40 +10,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PedidosPage implements OnInit {
   rotaId: number = 0;
-  pedidos: any[] = [];
+  pedidos: Pedido[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private rotasService: RotasService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.rotaId = params['id'];
-
-      this.pedidos = this.obterPedidosPorRota(this.rotaId);
+      this.obterPedidosPorRota(this.rotaId);
     });
   }
 
-  obterPedidosPorRota(rotaId: number): any[] {
-    // Consultar serviço para buscar os pedidos
-
-    // TODO: remover mock
-    return [
-      {
-        id: 1,
-        nomeCliente: 'Jaqueline',
-        endereco: 'Av. Inconfidência 1002, Canoas',
-        observacoes: 'Portão Amarelo',
-        telefone: '(51) 99257-8631',
-        itensPedido: ['1 kg - Carne moída', '5 kg - Picanha'],
+  obterPedidosPorRota(rotaId: number) {
+    this.rotasService.getPedidos(rotaId).subscribe({
+      next: (data) => {
+        data ? (this.pedidos = data.pedidos) : (this.pedidos = []);
       },
-      {
-        id: 2,
-        nomeCliente: 'Rodrigo',
-        endereco: 'R. Marechal 782, Canoas',
-        observacoes: 'Em frente ao mercado do Rogério',
-        telefone: '(51) 99278-8481',
-        itensPedido: ['3 kg - Coxão de dentro', 'Carvão 5kg'],
+      error: (error) => {
+        console.error('Erro ao buscar os pedidos da rota:', error);
       },
-    ];
+    });
   }
 
   verPedido(pedidoId: number) {
@@ -49,6 +41,7 @@ export class PedidosPage implements OnInit {
   }
 
   verMapa() {
-    this.router.navigate(['tabs/mapa', this.pedidos]);
+    const enderecos = this.pedidos.map((pedido) => pedido.endereco);
+    this.router.navigate(['tabs/mapa'], { state: { enderecos: enderecos } });
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RotasService } from '../services/rotas/rotas.service';
 import { Router } from '@angular/router';
+import { Rota } from '../interfaces/rotas.interface';
 
 @Component({
   selector: 'app-entregas',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['entregas.page.scss'],
 })
 export class EntregasPage {
-  rotas: any[] = []; //Criar uma classe para definir o objeto de retonro do back
+  rotas: Rota[] = [];
 
   constructor(private rotasService: RotasService, private router: Router) {}
 
@@ -21,8 +22,13 @@ export class EntregasPage {
   }
 
   carregarRotas() {
-    this.rotasService.getRotas().subscribe((data) => {
-      this.rotas = data;
+    this.rotasService.getRotas().subscribe({
+      next: (data) => {
+        data ? (this.rotas = data.rotas) : (this.rotas = []);
+      },
+      error: (error) => {
+        console.error('Erro ao buscar os dados de rotas:', error);
+      },
     });
   }
 

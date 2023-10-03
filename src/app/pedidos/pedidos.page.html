@@ -11,7 +11,9 @@
   <ion-list>
     <ion-item *ngFor="let pedido of pedidos" (click)="verPedido(pedido.id)">
       <ion-label>
-        <h2><strong>Pedido {{ pedido.id }}</strong></h2>
+        <h2 [ngClass]="{'texto-riscado': pedido.statusEntrega}">
+          <strong>Pedido {{ pedido.id }}</strong>
+        </h2>
         <p><strong>Nome do cliente: </strong>{{ pedido.nomeCliente }}</p>
         <p><strong>Endereço: </strong>{{ pedido.endereco }}</p>
         <p><strong>Observações: </strong>{{ pedido.observacoes }}</p>
