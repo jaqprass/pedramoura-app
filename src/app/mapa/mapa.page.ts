@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { ToastController } from '@ionic/angular';
+import { Pedido } from '../interfaces/pedidos.interface';
 
 @Component({
   selector: 'app-mapa',
@@ -11,9 +13,28 @@ export class MapaPage implements OnInit {
   @ViewChild('gmap') mapElement!: ElementRef;
   map: any;
   loader!: Loader;
+  enderecos: string[] = [];
+  waypoints: google.maps.DirectionsWaypoint[] = [];
 
-  constructor(private toastController: ToastController) {}
-  ngOnInit(): void {}
+  constructor(
+    private route: ActivatedRoute,
+    private toastController: ToastController
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(() => {
+      const state = history.state;
+      if (state) {
+        this.enderecos = state.enderecos;
+        this.enderecos.forEach((endereco) => {
+          this.waypoints.push({
+            location: endereco,
+            stopover: true,
+          });
+        });
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -44,21 +65,10 @@ export class MapaPage implements OnInit {
 
         directionsService.route(
           {
-            origin: 'Rolante, RS, 95690-000, Brasil',
-            destination: 'Rolante, RS, 95690-000, Brasil',
+            origin: 'Rolante, RS, 95690-000, Brasil', //Saindo da empresa PedraMoura
+            destination: 'Rolante, RS, 95690-000, Brasil', //Retornando a empresa PedraMoura
             travelMode: google.maps.TravelMode.DRIVING,
-            waypoints: [
-              {
-                location:
-                  'R. Ouro Preto, 408 - Jardim Floresta, Porto Alegre - RS, 91040-610, Brasil',
-                stopover: true,
-              },
-              {
-                location:
-                  'Av. Guilherme Schell, 6750 - Centro, Canoas - RS, 92310-564, Brasil',
-                stopover: true,
-              },
-            ],
+            waypoints: this.waypoints,
           },
           function (result, status) {
             if (status == 'OK') {
@@ -84,10 +94,7 @@ export class MapaPage implements OnInit {
 
   openGoogleMapsNavigation() {
     const destination = 'Rolante, RS, 95690-000, Brasil';
-    const waypoints = [
-      'R. Ouro Preto, 408 - Jardim Floresta, Porto Alegre - RS, 91040-610, Brasil',
-      'Av. Guilherme Schell, 6750 - Centro, Canoas - RS, 92310-564, Brasil',
-    ];
+    const waypoints = this.enderecos;
 
     const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=Minha+Localizacao&destination=${destination}&travelmode=driving&waypoints=${waypoints.join(
       '|'
