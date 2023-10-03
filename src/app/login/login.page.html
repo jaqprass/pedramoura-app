@@ -1,8 +1,19 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="login-container">
+    <!--
     <ion-button fill="clear">
-      <span (click)="fechar()" class="fechar-botao">X</span>
+      
+        <span (click)="fechar()" class="fechar-botao">Fechar</span>
     </ion-button>
+    -->
+
+    <ion-img
+      src="assets/images/app-delivery.png"
+      alt="Pedra Moura Delivery"
+    ></ion-img>
+
+    <p>Bem-vindo!</p>
+    <p>Para acessar, informe e-mail e senha:</p>
     <ion-input type="email" [(ngModel)]="email" placeholder="Email"></ion-input>
     <ion-input
       type="password"
@@ -11,6 +22,6 @@
     ></ion-input>
     <ion-button (click)="entrar()">Entrar</ion-button>
 
-    <div *ngIf="erro" class="erro">{{ erro }}</div>
+    <!--<div *ngIf="erro" class="erro">{{ erro }}</div>-->
   </div>
 </ion-content>

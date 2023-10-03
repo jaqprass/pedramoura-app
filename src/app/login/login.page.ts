@@ -32,11 +32,11 @@ export class LoginPage {
       this.auth
         .login(this.email, this.senha)
         .then(() => {
-          this.router.navigate(['tabs/home']);
+          this.router.navigate(['/tabs/home']);
         })
         .catch((error) => {
           this.presentErrorToast();
-          this.email = '';
+          //this.email = '';
           this.senha = '';
         });
     } else {
@@ -50,8 +50,8 @@ export class LoginPage {
   async presentErrorToast() {
     const toast = await this.toastController.create({
       message: 'Erro no login',
-      duration: 3000,
-      position: 'top',
+      duration: 2000,
+      position: 'bottom',
       color: 'danger',
     });
     toast.present();
