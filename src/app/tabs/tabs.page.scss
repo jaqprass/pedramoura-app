@@ -1,1 +1,11 @@
+.top-logo {
+    max-width: 200px; /* Set your desired maximum width here */
+    width: 100%; /* Ensure the image scales proportionally within the max-width */
+    justify-content: center;
+  }
 
+.header-image-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+  }

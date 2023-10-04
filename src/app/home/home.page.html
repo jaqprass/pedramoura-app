@@ -1,10 +1,14 @@
-<div id="container">
-  <ion-img
-    src="assets/images/app-delivery.png"
-    alt="Pedra Moura Delivery"
-  ></ion-img>
 
-  <ion-button fill="clear" (click)="onButtonClick()"
-    >{{ isLoggedIn ? 'Sair' : 'Entrar' }}</ion-button
-  >
-</div>
+<ion-content>
+  <div class="welcome-container">
+    <h1>Bem-vindo, <span id="user-name">Joseph K.</span>!</h1>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="center-horizontal">
+    <ion-button (click)="onButtonClick()">
+      {{ isLoggedIn ? 'Sair' : 'Entrar' }}
+    </ion-button>
+  </div>
+</ion-footer>

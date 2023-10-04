@@ -46,16 +46,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('../mapa/mapa.module').then((m) => m.MapaPageModule),
       },
-      {
-        path: '',
-        redirectTo: '/tabs/home',
-        pathMatch: 'full',
-      },
     ],
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('../login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
 ];
