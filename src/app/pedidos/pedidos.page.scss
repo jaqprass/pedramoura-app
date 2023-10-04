@@ -1,3 +1,9 @@
 .texto-riscado {
   text-decoration: line-through;
 }
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Optional, use if you want to center vertically as well */
+}
