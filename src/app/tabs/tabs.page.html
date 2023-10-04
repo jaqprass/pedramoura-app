@@ -1,30 +1,28 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home" href="/tabs/home">
-      <ion-icon aria-hidden="true" name="home"></ion-icon>
-      <ion-label>Home</ion-label>
-    </ion-tab-button>
+<ion-header class="header-image-container">
+  <ion-img
+    src="assets/images/logo.png"
+    alt="Pedra Moura"
+    class="top-logo"
+  ></ion-img>
+</ion-header>
 
-    <ion-tab-button tab="entregas" href="/tabs/entregas">
-      <ion-icon aria-hidden="true" name="list"></ion-icon>
-      <ion-label>Entregas</ion-label>
-    </ion-tab-button>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" href="/tabs/home">
+        <ion-icon aria-hidden="true" name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="historico" href="/tabs/historico">
-      <ion-icon aria-hidden="true" name="book"></ion-icon>
-      <ion-label>Histórico</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+      <ion-tab-button tab="entregas" href="/tabs/entregas">
+        <ion-icon aria-hidden="true" name="list"></ion-icon>
+        <ion-label>Entregas</ion-label>
+      </ion-tab-button>
 
-<!-- <ion-header [translucent]="true" class="ion-fixed">
-  <ion-toolbar>
-    <ion-title>
-      <ion-img
-        src="assets/images/logo.png"
-        alt="Pedra Moura"
-        class="header-img"
-      ></ion-img>
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
+      <ion-tab-button tab="historico" href="/tabs/historico">
+        <ion-icon aria-hidden="true" name="book"></ion-icon>
+        <ion-label>Histórico</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

@@ -6,6 +6,11 @@
   height: 100%;
 }
 
+.login-logo {
+  max-width: 300px; /* Set your desired maximum width here */
+  width: 100%; /* Ensure the image scales proportionally within the max-width */
+}
+
 ion-input,
 ion-button {
   width: 100%;
