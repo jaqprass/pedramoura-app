@@ -36,7 +36,6 @@ export class LoginPage {
         })
         .catch((error) => {
           this.presentErrorToast();
-          //this.email = '';
           this.senha = '';
         });
     } else {
